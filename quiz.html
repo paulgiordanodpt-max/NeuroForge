@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>The NeuroSomatic Freedom Scale Quiz | NeuroForge</title>
+
+  <meta name="description" content="Take the NeuroSomatic Freedom Scale quiz to discover if your symptoms are structural or driven by a protective nervous system loop." />
+  <meta name="author" content="Dr. Paul Giordano" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Calendly -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- Connects to your existing site colors/styles -->
+  <link rel="stylesheet" href="styles.css"/>
+
+  <style>
+    /* Quiz Specific Styling that plays nice with Inter font */
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    
+    .quiz-section {
+        padding: 60px 20px;
+        background-color: #f9fafb; /* Neutral fallback background */
+    }
+
+    .quiz-container {
+        max-width: 680px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .quiz-container h1 {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 12px;
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #4b5563;
+        margin-bottom: 40px;
+        font-size: 16px;
+    }
+
+    .question-card {
+        border-bottom: 1px solid #e5e7eb;
+        padding: 24px 0;
+    }
+
+    .question-card:last-of-type {
+        border-bottom: none;
+    }
+
+    .question-text {
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .context-text {
+        font-size: 15px;
+        color: #4b5563;
+        margin-bottom: 18px;
+        line-height: 1.5;
+    }
+
+    .options {
+        display: flex;
+        gap: 20px;
+    }
+
+    .option-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        background: #f3f4f6;
+        padding: 10px 20px;
+        border-radius: 6px;
+        transition: background 0.2s;
+    }
+    
+    .option-label:hover {
+        background: #e5e7eb;
+    }
+
+    input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+
+    .btn-submit {
+        display: block;
+        width: 100%;
+        background-color: #111827; /* Dark elegant button fallback */
+        color: white;
+        border: none;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 40px;
+        transition: opacity 0.2s ease;
+    }
+
+    .btn-submit:hover {
+        opacity: 0.9;
+    }
+
+    #result-box {
+        display: none;
+        margin-top: 40px;
+        padding: 30px;
+        border-radius: 8px;
+        border-left: 5px solid #111827;
+        background: #f3f4f6;
+    }
+
+    .result-title {
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+    
+    .result-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+
+    .error-message {
+        display: none;
+        color: #dc2626;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR MATCHING HOMEPAGE -->
+<nav class="navbar">
+  <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">NeuroForge</a></div>
+
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#method">Method</a></li>
+    <li><a href="index.html#results">Who It's For</a></li>
+    <li><a href="quiz.html" class="active">Quiz</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#contact">Book Call</a></li>
+  </ul>
+</nav>
+
+<!-- QUIZ CONTAINER SECTION -->
+<section class="quiz-section">
+  <div class="quiz-container">
+      <h1>The NeuroSomatic Freedom Scale</h1>
+      <p class="subtitle">Answer these 10 questions to evaluate if your symptoms point toward structural tissue damage or an overprotective nervous system safety loop.</p>
+      
+      <form id="quiz-form">
+          <!-- Q1 -->
+          <div class="question-card">
+              <div class="question-text">1. The Chameleon Effect (Symptom Shifting)</div>
+              <div class="context-text">Do your symptoms ever change physical location, alter significantly in intensity, or swap sensations (e.g., switching from a deep dull ache to a surface burning tingle)?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q1" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q1" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="question-card">
+              <div class="question-text">2. The Structural Paradox (Imaging vs. Reality)</div>
+              <div class="context-text">Have your symptoms completely failed to improve—or actually worsened—even after targeted physical treatments, surgeries, or specific rehabilitation protocols aimed directly at fixing your structural imaging results (X-rays, MRIs)?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q2" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q2" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="question-card">
+              <div class="question-text">3. The Stress Synchronization</div>
+              <div class="context-text">Do your symptoms noticeably flare up, intensify, or suddenly reappear during—or immediately following—periods of high emotional stress, professional confrontation, heavy workloads, or major life transitions?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q3" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q3" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="question-card">
+              <div class="question-text">4. The Weekend / Vacation Reprieve</div>
+              <div class="context-text">Have you ever noticed your symptoms decrease or completely vanish when you are deeply distracted, away on a relaxing vacation, or fully engaged in an activity you love and feel safe doing?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q4" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q4" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="question-card">
+              <div class="question-text">5. The Structural Law-Breaker</div>
+              <div class="context-text">Do your symptoms break predictable physical laws? (e.g., sitting hurts on a soft home couch but feels fine in a firm car seat; or bending forward hurts to pick up a light pen, but doesn't hurt when lifting heavy weights or tying shoes?)</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q5" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q5" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="question-card">
+              <div class="question-text">6. The Anticipation Flare</div>
+              <div class="context-text">Do you ever experience an immediate surge in symptoms simply by thinking about an upcoming workout, planning an extensive trip, or dreading a specific physical task before you have even made a single physical movement?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q6" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q6" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="question-card">
+              <div class="question-text">7. The Symmetrical Twin</div>
+              <div class="context-text">Do your symptoms ever mirror themselves on opposite sides of your body, or affect an entire broad, cloud-like region that does not align with a single specific localized nerve pathway?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q7" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q7" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="question-card">
+              <div class="question-text">8. The Personality Match</div>
+              <div class="context-text">Do you highly identify with traits like perfectionism, people-pleasing, high-achievement, or internalizing subconscious pressure, resentment, or hyper-vigilance?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q8" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q8" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q9 -->
+          <div class="question-card">
