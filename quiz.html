@@ -261,5 +261,114 @@
               </div>
           </div>
 
-          <!-- Q9 -->
+                  <!-- Q9 -->
           <div class="question-card">
+              <div class="question-text">9. The Weather & Environment Variable</div>
+              <div class="context-text">Do your symptoms scale up based on external environmental triggers that shouldn't logically cause mechanical tissue damage, such as cold weather changes, indoor air conditioning, specific foods, or entering a stressful building layout?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q9" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q9" value="0"> No</label>
+              </div>
+          </div>
+
+          <!-- Q10 -->
+          <div class="question-card">
+              <div class="question-text">10. The Safe Assessment</div>
+              <div class="context-text">Deep down, despite how intense or terrifying the flares feel mechanically, have doctors run extensive diagnostic testing and ruled out malignant, progressive, or life-threatening disease processes?</div>
+              <div class="options">
+                  <label class="option-label"><input type="radio" name="q10" value="1" required> Yes</label>
+                  <label class="option-label"><input type="radio" name="q10" value="0"> No</label>
+              </div>
+          </div> <!-- CLEAR CLOSING TAG BACK IN PLACE -->
+
+          <button type="submit" class="btn-submit">Calculate My Score</button>
+          <div id="error-msg" class="error-message">Please select an answer for all 10 evaluation points before submitting.</div>
+      </form>
+
+      <!-- RESULTS POP-UP BOX (HIDDEN UNTIL SUBMIT IS CLICKED) -->
+      <div id="result-box">
+          <div class="result-title" id="result-score-title">Your Score: 0/10</div>
+          <p class="result-desc" id="result-text"></p>
+          <div style="text-align: center; margin-top: 25px;">
+              <a href="#contact" style="display: inline-block; background-color: #111827; color: white; padding: 14px 28px; font-weight: 700; border-radius: 6px; text-decoration: none;">Review Your Matrix with Dr. Paul</a>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- CALENDLY STRATEGY CALL SECTION -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 30px;">Book Your Movement Clarity Strategy Call</h2>
+    <div class="calendly-inline-widget"
+      data-url="https://calendly.com"
+      style="min-width:320px;height:700px;">
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container" style="text-align: center; padding: 20px 0;">
+    <p>© 2026 NeuroForge</p>
+  </div>
+</footer>
+
+<!-- QUIZ LOGIC AND SCORING SELECTION SCRIPT -->
+<script>
+    document.getElementById('quiz-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const totalQuestions = 10;
+        let score = 0;
+        let allAnswered = true;
+
+        // Loop through all 10 questions to collect values
+        for (let i = 1; i <= totalQuestions; i++) {
+            const radioGroup = document.getElementsByName('q' + i);
+            let answered = false;
+            for (let radio of radioGroup) {
+                if (radio.checked) {
+                    score += parseInt(radio.value);
+                    answered = true;
+                }
+            }
+            if (!answered) {
+                allAnswered = false;
+            }
+        }
+
+        const errorMsg = document.getElementById('error-msg');
+        const resultBox = document.getElementById('result-box');
+        const resultScoreTitle = document.getElementById('result-score-title');
+        const resultText = document.getElementById('result-text');
+
+        // Halt if any questions were missed
+        if (!allAnswered) {
+            errorMsg.style.display = 'block';
+            resultBox.style.display = 'none';
+            return;
+        }
+
+        // Hide error message and render metrics
+        errorMsg.style.display = 'none';
+        resultScoreTitle.innerText = `NeuroSomatic Safety Match Score: ${score}/10`;
+        
+        let feedback = "";
+        if (score <= 3) {
+            feedback = "<strong>Low Neural-Circuit Activity:</strong> There may be an active mechanical component to your presentation, or you are in the introductory stages of system adaptation. We recommend a precise movement review to map out load structural progression safely.";
+        } else if (score <= 6) {
+            feedback = "<strong>Moderate NeuroSomatic Patterns:</strong> Your system has adopted predictive protective pain mechanisms to guard you against structural loading, environmental stress, or historical trauma. This is highly responsive to motor retraining and somatic calibration.";
+        } else {
+            feedback = "<strong>High NeuroSomatic Safety Match:</strong> This is clear evidence that your structural tissue is fundamentally intact, but your brain is currently trapped in a hyper-vigilant, protective danger loop. Healing does not require fixing mechanical damage; it requires retraining the neural software system.";
+        }
+
+        // Unhide results block and smoothly snap screen viewport to the target box
+        resultText.innerHTML = feedback;
+        resultBox.style.display = 'block';
+        
+        setTimeout(function() {
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 50);
+    });
+</script>
