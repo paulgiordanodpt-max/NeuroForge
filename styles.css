@@ -717,3 +717,119 @@ footer p{
     margin: 0;
     position: relative;
     display: flex;
+/* ===== PRICING BASE ===== */
+
+.pricing {
+  padding: 80px 20px;
+  background: #0f1115; /* adjust if your site is light */
+}
+
+/* container alignment consistency */
+.pricing .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* grid spacing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ===== CARD STYLE ===== */
+
+.pricing-card {
+  background: #161a22;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 28px;
+  color: #e8e8e8;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* featured card emphasis */
+.pricing-card.featured {
+  border: 1px solid rgba(120, 160, 255, 0.35);
+  background: #171f2e;
+}
+
+/* ===== TEXT HIERARCHY ===== */
+
+.pricing-card h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 10px 0;
+  color: #ffffff;
+}
+
+.tagline {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 16px;
+}
+
+/* list styling */
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.pricing-card ul li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ===== BUTTONS ===== */
+
+.primary-btn {
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+}
+
+.primary-btn:hover {
+  background: #2563eb;
+}
+
+.secondary-btn {
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.secondary-btn:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
